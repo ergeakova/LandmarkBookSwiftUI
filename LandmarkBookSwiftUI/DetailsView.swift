@@ -8,44 +8,39 @@
 import SwiftUI
 
 struct DetailsView: View {
+    var landmark: Landmark
     var body: some View {
+        
         VStack{
-            MapView(coordinate: landmarkArray[0].locationCoordinate)
+            MapView(coordinate: landmark.locationCoordinate)
                 .edgesIgnoringSafeArea(.top)
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-            //.position(x:UIScreen.main.bounds.width * 0.5 ,y: UIScreen.main.bounds.height * 0.2)
-
            
-            CircleImageView(imageName: "pisa")
+            CircleImageView(imageName: landmark.imageName)
                 .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.3)
                 .offset(y:UIScreen.main.bounds.height * -0.17)
                 .padding(.bottom,UIScreen.main.bounds.height * -0.20)
             
-          
-            
             VStack{
-                Text(landmarkArray[0].name)
+                Text(landmark.name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
                 HStack{
-                    Text(landmarkArray[0].category)
+                    Text(landmark.category)
                         .font(.subheadline)
                     Spacer()
-                    Text(landmarkArray[0].country)
+                    Text(landmark.country)
                 }.frame(width: UIScreen.main.bounds.width * 0.95)
             }
             
-            
             Spacer()
-            
-            
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsView()
+        DetailsView(landmark: londonBridgeLandmark)
     }
 }
