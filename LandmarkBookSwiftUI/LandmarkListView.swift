@@ -12,7 +12,7 @@ struct LandmarkListView: View {
         NavigationView{
             List(landmarkArray){ landmark in
                 NavigationLink(destination: DetailsView(landmark: landmark)) {
-                    Text(landmark.name)
+                    LandmarkListRowView(landmark: landmark)
                 }
             }.navigationTitle("Landmark List")
         }
